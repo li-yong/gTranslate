@@ -1,4 +1,6 @@
 **Google Cloud Translation API Script**
+project URL: https://github.com/li-yong/gTranslate
+
 ## Overview
 This Python script utilizes the Google Cloud Translation API to translate text from a source file to a target language. The script is designed to be easy to use and requires minimal setup.
 
