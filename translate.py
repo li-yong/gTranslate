@@ -5,6 +5,7 @@ import os
 
 # Replace with your downloaded JSON key file path
 credentials_path = "path/to/your/credentials.json"
+credentials_path = "C:\\tmp\\424\\gcloud.json"
 translate_client = translate.Client.from_service_account_json(credentials_path)
 
 def translate_text(text, target_language):
