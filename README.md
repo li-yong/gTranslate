@@ -1,8 +1,30 @@
-# gTranslate
+**Google Cloud Translation API Script**
 ## Overview
+This Python script utilizes the Google Cloud Translation API to translate text from a source file to a target language. The script is designed to be easy to use and requires minimal setup.
 
-Translate the `source.txt` to the target language with Google Translate API.  
-Translated output saved to `target.txt` in the same directory.
+**Features:**
+
+* Translates text from a source file to a target language using the Google Cloud Translation API
+* Supports multiple languages (see [supported languages](https://cloud.google.com/translate/docs/languages) for a full list)
+* Automatically detects the source language of the text
+* Saves the translated text to a target file
+* Handles errors and exceptions, including file not found, IO errors, and Google API errors
+
+**Usage:**
+
+1. Replace the `credentials_path` variable with the path to your JSON key file.
+2. Create a `source.txt` file in the same directory as the script, containing the text to be translated.
+3. Run the script using Python (e.g., `python translate_script.py`).
+4. Enter the target language code when prompted (e.g., en, es, fr).
+5. The script will translate the text and save it to a `target.txt` file in the same directory.
+
+**Requirements:**
+
+* Python 3.x
+* Google Cloud Translation API enabled for your project
+* A service account and private key file (JSON key file)
+
+**Note:** This script is intended for personal or educational use only. Please ensure you comply with the Google Cloud Terms of Service and usage guidelines.
 
 ## Installation
 **Step 1: Install Python**
