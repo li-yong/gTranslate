@@ -1,9 +1,11 @@
 from google.cloud import translate_v2 as translate
 from google.api_core import exceptions
+import os
 
 
 # Replace with your downloaded JSON key file path
 credentials_path = "path/to/your/credentials.json"
+credentials_path = "C:\\tmp\\424\\gcloud.json"
 translate_client = translate.Client.from_service_account_json(credentials_path)
 
 def translate_text(text, target_language):
@@ -28,24 +30,35 @@ def translate_text(text, target_language):
   except exceptions.GoogleAPIError as err:
     raise ValueError(f"Translation failed: {str(err)}") from err
 
-# Get user input (same as before)
-# text_to_translate = input("Enter text to translate: ")
-# Read the text to translate from the input file
-with open('source.txt', 'r', encoding='utf-8') as file:
-    text_to_translate = file.read()
-print("have read the text from source.txt")
 
-target_lang = input("Enter target language (e.g., en, es, fr,zh-CN): ")
 
-# Translate the text with exception handling
-try:
-    translated_text = translate_text(text_to_translate, target_lang)
-    print(f"Translated Text: {translated_text}")
 
-    # Write the translated text to the output file
-    with open('target.txt', 'w', encoding='utf-8') as file:
-        file.write(translated_text)
 
-    print(f"Translation saved to 'target.txt'")
-except ValueError as e:
-    print(f"Error: {e}")
+if __name__ == "__main__":
+    # Get the script's current directory (for reliable file paths)
+    script_dir = os.path.dirname(__file__)
+
+    # File paths - Assume files are in the same directory as this script
+    source_file = os.path.join(script_dir, "source.txt")
+    target_file = os.path.join(script_dir, "target.txt")
+
+    try:
+        # Read text from the input file
+        with open(source_file, "r", encoding='utf-8') as f:
+            text_to_translate = f.read()
+
+        target_lang = input("Enter target language (e.g., en, es, fr): ")
+
+        translated_text = translate_text(text_to_translate, target_lang)
+        print(f"Translated Text: {translated_text}")
+
+        # Write the translated text to the output file
+        with open(target_file, "w", encoding='utf-8') as f:
+            f.write(translated_text)
+
+        print(f"Translation saved to '{target_file}'")
+
+    except (FileNotFoundError, IOError) as e:
+        print(f"Error reading/writing files: {e}")
+    except ValueError as e:
+        print(f"Error: {e}")
