@@ -72,7 +72,9 @@ If you encounter any errors while running the script, check the following:
 
 
 ## Example
-In Google Clould SDK shel, run 
+In Google Clould SDK shell, run the script.
+
+**In this example, source language is `en` and target language is `es`.**
 
 ```bash
 C:\GitHub>cd gTranslate
